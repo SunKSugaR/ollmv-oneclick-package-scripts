@@ -1,0 +1,4 @@
+*.exe
+external/
+.vscode/
+ollmv-env/

@@ -1,0 +1,85 @@
+version: 0.1.0
+
+zh:
+  error:
+    python_version_not_supported: "不支持的 Python 版本，请使用 3.10.0 ~ 3.11.10 版本"
+    conda_not_found: "未找到 conda.exe，请安装 Anaconda 或 Miniconda 并重试"
+    invalid_input: "未知的输入结果，请重新输入"
+    path_failed: "路径 {path} 不存在且尝试创建时失败，请重新输入"
+
+  info:
+    press_return_to_continue: "按 回车键 以继续"
+    current_python_version: "当前 Python 版本：{python_version}"
+    venv_tools_requirements:
+      - "虚拟环境部署工具的要求"
+      - "conda - 确保已安装 Anaconda 或 Miniconda"
+      - "venv - 确保已安装 Python 3.10.0 ~ 3.11.10 版本"
+    select_venv_tool: "请选择要用于搭建虚拟环境的工具（conda/venv）："
+    venv_tool_reselect: "当前虚拟环境部署工具不可用，请重新选择"
+    venv_tool_selected: "已选择 {venv_tool} 作为虚拟环境部署工具"
+    cuda_install_hint: 
+      - "如果需要使用 GPU 加速，请安装 CUDA 和 CUDNN 并重试"
+      - "可以参考 https://blog.csdn.net/moyong1572/article/details/119438286 进行安装"
+      - "如需重试，请就此终结此程序，否则将以 CPU 模式安装"
+    cuda_found: "已找到 CUDA & CUDNN 存在于主要目录：\n{cuda_paths}"
+    pip_repositorys:
+      - 1: "清华大学（推荐）：https://pypi.tuna.tsinghua.edu.cn/simple"
+      - 2: "阿里云：http://mirrors.aliyun.com/pypi/simple"
+      - 3: "中国科技大学：https://pypi.mirrors.ustc.edu.cn/simple"
+      - 4: "华中科技大学：http://pypi.hustunique.com"
+      - 5: "腾讯云：https://mirrors.cloud.tencent.com/pypi/simple"
+      - 6: "豆瓣：http://pypi.douban.com/simple"
+      - 7: "官方（不推荐）：https://pypi.org/simple"
+    select_pip_repository: "请选择 pip 源（输入对应序号数字，留空则使用官方源）："
+    pip_current_repository: "当前 pip 源：{repository}"
+    pip_repository_set: "已设置 pip 源为：{repository}"
+    pip_repository_found: "已找到 pip 源：{repository}\n若后续安装依赖出现问题，则可能需要更换镜像源，届时请重新运行此程序并选择其他源\n"
+    change_pip_repository: "是否更改 pip 源？（如需更改请直接输入序号数字，留空则跳过）："
+    preparing_venv: "正在准备虚拟环境"
+    venv_already_exists: "非一键包自带的重名虚拟环境已存在，是否重新安装？（y/n）："
+    venv_created: "虚拟环境创建成功"
+    venv_create_skipped: "虚拟环境创建步骤已跳过"
+    installing_dependencies: "正在安装依赖"
+    installing_melotts: "正在安装 MeloTTS"
+    install_completed: "安装完成"
+    unidic_download: "即将进行 Unidic 下载，此步要求打开代理，接下来设置代理地址"
+    stage_1: "阶段一：环境检测\n"
+    stage_2: "阶段二：依赖安装\n"
+    stage_3: "第三阶段环境准备完成"
+    stage_4: "第四阶段环境准备完成"
+  
+  warning:
+    cuda_not_found: "未找到 CUDA，将默认使用全CPU模式，可能会导致速度较慢"
+    cudnn_not_found: "已安装 CUDA 但未找到 CUDNN，可能会导致 ASR 无法使用 GPU 加速"
+    cuda_path_variable_not_set: "此消息代表 CUDA 相关环境变量未设置完善，若已安装 CUDA，请检查并设置 Path 系统变量并重试"
+    pip_repository_warn: "警告：使用官方源，可能会导致速度较慢\n建议设置为以下国内镜像源之一以加快下载速度："
+
+  ollama:
+    found: "已找到 Ollama 的可执行程序：{path}"
+    not_found: "未找到 Ollama 的可执行程序，将执行安装程序"
+    install_path: "请输入 Ollama 安装目录（留空以使用默认目录）："
+    models_path_not_set: "大语言模型存放目录未设置"
+    defalut_hints: 
+      - "对于一键包的用户，包中默认包含了 llama3.2 的模型文件，位于当前目录下的 external/LLMs 文件夹"
+      - "所以，下一步可以直接回车以使用默认目录"
+      - "对于已经部署好项目使用自己的模型的用户，请手动设置大语言模型存放目录"
+    select_or_default: "请输入目录路径 或 留空以使用默认目录（当前目录下的 external/LLMs 文件夹）："
+    models_path_set: "大语言模型存放目录已设置为 {path}"
+    models_path_found: "已找到大语言模型存放目录：{path}"
+    found_hint: "本一键包内的 conf.yaml 中默认使用 llama3.2 模型，若需要使用其他已安装在此目录下的模型，请手动修改 conf.yaml"
+    change_path: "是否更改大语言模型目录？（如需更改请直接输入目录，留空则跳过）："
+    running: "{app} 正在运行，PID: {pid}"
+    killed: "已终止 {app} 进程"
+    find_llms_path: "寻找大语言模型存放目录"
+    restart: "重启 Ollama 进程"
+  
+  ffmpeg:
+    found: "已找到 FFmpeg 的可执行程序：{path}"
+    not_found: "未找到 FFmpeg 的可执行程序，如果你没有配置好系统的 Path 变量，就可能出现这个问题"
+    setup_hints: 
+     - "对于一键包的用户，包中默认包含了 FFmpeg，位于当前目录下的 external/ffmpeg 文件夹"
+     - "所以，程序将用默认目录下的 FFmpeg 进行环境变量配置"
+     - "对于已经下载 FFmpeg 的用户，若不想使用默认目录下的 FFmpeg，请手动设置系统的 Path 变量"
+    setup: "是否使用默认目录下的 FFmpeg 进行环境变量配置？（y/n）："
+    not_setup: "系统的 Path 变量未设置，请手动设置 FFmpeg 的可执行程序路径"
+    path_set: "已设置 FFmpeg 的可执行程序路径为：{path}"
