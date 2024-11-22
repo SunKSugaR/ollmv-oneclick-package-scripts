@@ -12,9 +12,10 @@ if "%env_path%" == "" (
 if "%proxy1%" == "" (
     echo Downloading without proxy.
     echo May cause slow download speed.
-) esle (
+) else (
     set http_proxy=%proxy%
     set https_proxy=%proxy%
 )
 
-cmd /k "%env_path% -m unidic download"
+start cmd /c "%env_path% -m unidic download"
+exit /b 0

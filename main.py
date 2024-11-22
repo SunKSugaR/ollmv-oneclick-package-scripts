@@ -346,21 +346,21 @@ if __name__ == "__main__":
     print(messages['info']['stage_2'])
     print(messages['info']['installing_melotts'])
     melotts_path = os.path.join(current_path, "external\\MeloTTS")
-    general_cmd([python_path, '-m', 'pip', 'install', '-e', melotts_path, '--no-warn-script-location'])
+    general_cmd([python_path, '-m', 'pip', 'install', '-e', melotts_path, '--no-warn-script-location', '--use-pep517'])
     print(messages['info']['install_completed'])
+    multi_msg_print(messages['info']['unidic_download'])
     pause_and_clear()
-    print(messages['info']['unidic_download'])
     proxy = ""
     while True:
         print(messages['info']['stage_2'])
         proxy = str(input(messages['info']['set_proxy']))
         if proxy != "":
-            if "localhost:" not in proxy or "127.0.0.1:" not in proxy:
+            if "127.0.0.1:" in proxy or "localhost:" in proxy:
+                break
+            else:
                 print(messages['error']['invalid_proxy'])
                 pause_and_clear()
                 continue
-            else:
-                break
         else:
             print(messages['info']['proxy_skipped'])
             break
@@ -371,7 +371,7 @@ if __name__ == "__main__":
     # 以防万一，升级 edgeTTS
     print(messages['info']['stage_2'])
     print(messages['info']['upgrading_edgetts'])
-    general_cmd([python_path, '-m', 'pip', 'install', '-U', 'edge-tts'])
+    general_cmd([python_path, '-m', 'pip', 'install', '-U', 'edge-tts', '--no-warn-script-location'])
     print(messages['info']['install_completed'])
     pause_and_clear()
     
@@ -380,3 +380,4 @@ if __name__ == "__main__":
     # 阶段三：启动！
     print(messages['info']['stage_3'])
     general_cmd(['start', 'cmd', '/k', python_path, 'server.py'])
+    

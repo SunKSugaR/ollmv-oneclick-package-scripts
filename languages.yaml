@@ -44,7 +44,10 @@ zh:
     installing_melotts: "正在安装 MeloTTS （可能需要五到十分钟，请耐心等待）"
     install_completed: "安装完成"
     upgrading_edgetts: "正在升级 EdgeTTS"
-    unidic_download: "即将进行 Unidic 下载，此步要求打开代理，接下来设置代理地址"
+    unidic_download:
+      - "即将进行 Unidic 下载"
+      - "如果你的网络对于国外网站的访问速度较慢，那么请打开代理，并在下一步设置好代理地址"
+      - "当然，如果你相信你的网络环境，可以直接跳过下一步"
     proxy_hint: "当你打开代理后，你可以在‘设置-网络和 Internet-代理-手动设置代理-设置’中进行查看"
     set_proxy: "请输入代理地址（留空则跳过）："
     proxy_skipped: "代理设置已跳过，若出现网络问题，请打开代理并重新尝试"
