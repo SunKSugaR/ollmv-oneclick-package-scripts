@@ -10,12 +10,11 @@ if "%env_path%" == "" (
 )
 
 if "%proxy1%" == "" (
-    echo Invalid HTTP&HTTPS proxy address.
-    exit /b 1
-    pause
+    echo Downloading without proxy.
+    echo May cause slow download speed.
+) esle (
+    set http_proxy=%proxy%
+    set https_proxy=%proxy%
 )
-
-set http_proxy=%proxy%
-set https_proxy=%proxy%
 
 cmd /k "%env_path% -m unidic download"

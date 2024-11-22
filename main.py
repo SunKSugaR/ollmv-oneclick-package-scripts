@@ -93,6 +93,7 @@ def path_check(path: str, errmsg: str) -> bool:
             print(errmsg)
             return False
 
+# 主程序
 if __name__ == "__main__":
     current_path = os.path.dirname(os.path.abspath(__file__))
     language = str(input("请选择语言/Please select language (zh/en): "))
@@ -345,6 +346,37 @@ if __name__ == "__main__":
     print(messages['info']['stage_2'])
     print(messages['info']['installing_melotts'])
     melotts_path = os.path.join(current_path, "external\\MeloTTS")
-    general_cmd([python_path, '-m', 'pip', 'install', '-e', melotts_path])
+    general_cmd([python_path, '-m', 'pip', 'install', '-e', melotts_path, '--no-warn-script-location'])
     print(messages['info']['install_completed'])
     pause_and_clear()
+    print(messages['info']['unidic_download'])
+    proxy = ""
+    while True:
+        print(messages['info']['stage_2'])
+        proxy = str(input(messages['info']['set_proxy']))
+        if proxy != "":
+            if "localhost:" not in proxy or "127.0.0.1:" not in proxy:
+                print(messages['error']['invalid_proxy'])
+                pause_and_clear()
+                continue
+            else:
+                break
+        else:
+            print(messages['info']['proxy_skipped'])
+            break
+    general_cmd(['unidicdl', python_path, proxy])
+    pause_and_clear()
+    
+    
+    # 以防万一，升级 edgeTTS
+    print(messages['info']['stage_2'])
+    print(messages['info']['upgrading_edgetts'])
+    general_cmd([python_path, '-m', 'pip', 'install', '-U', 'edge-tts'])
+    print(messages['info']['install_completed'])
+    pause_and_clear()
+    
+    
+    
+    # 阶段三：启动！
+    print(messages['info']['stage_3'])
+    general_cmd(['start', 'cmd', '/k', python_path, 'server.py'])
