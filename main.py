@@ -379,5 +379,5 @@ if __name__ == "__main__":
     
     # 阶段三：启动！
     print(messages['info']['stage_3'])
-    general_cmd(['start', 'cmd', '/k', python_path, 'server.py'])
+    general_cmd(['start', 'cmd', '/c', python_path, 'server.py'])
     
